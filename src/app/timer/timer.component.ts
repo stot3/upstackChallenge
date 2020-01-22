@@ -36,7 +36,7 @@ export class TimerComponent implements OnInit {
       //  d = Math.round( d * 1e3 ) / 1e3;
       //});
       this.d = anim
-      this.duration -= this.α;
+      this.duration--;
 
       setTimeout( () => this.draw(), this.t); 
     }

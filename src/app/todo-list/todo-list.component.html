@@ -4,7 +4,9 @@
       <app-todo-list-item
         [todo]="todo"
         (toggleComplete)="onToggleTodoComplete($event)"
-        (remove)="onRemoveTodo($event)"></app-todo-list-item>
+        (remove)="onRemoveTodo($event)">
+      </app-todo-list-item>
+      <app-timer></app-timer>
     </li>
   </ul>
 </section>

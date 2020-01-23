@@ -1,24 +1,38 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DurationFormatPipe } from './duration.pipe'
+import { Component, OnInit, ViewChild, ElementRef, Output, Input, EventEmitter, SimpleChanges, OnChanges, AfterContentInit } from '@angular/core';
+import { Todo } from '../todo';
+import { DurationFormatPipe } from '../duration-format.pipe';
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.scss'],
+  providers: [ DurationFormatPipe ]
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent implements AfterContentInit {
+
+  @Input() Todo: Todo; 
 
   d : string
   α = 0
   π = Math.PI
   t = 1000;
   playState = 'play';
-  duration = 1800
+  duration = 1800;
+  showControls = false;
 
-  constructor() { }
+  @Output() playStateChange = new EventEmitter<number>();
+  @Output() durationUpdate = new EventEmitter<number>()
+  @Output() timeUpdate = new EventEmitter<number>();
 
-  ngOnInit() {
+  ngAfterContentInit(){
       this.draw()
+      if(this.Todo.duration != 1800)
+      {
+        this.α = this.duration - this.Todo.duration * 0.2
+        this.duration = this.Todo.duration
+      }
+    
   }
+  constructor(){}
   draw(){
     if(this.playState === 'play')
     {
@@ -37,6 +51,7 @@ export class TimerComponent implements OnInit {
       //});
       this.d = anim
       this.duration--;
+      this.updateTimeSpent()
 
       setTimeout( () => this.draw(), this.t); 
     }
@@ -46,8 +61,21 @@ export class TimerComponent implements OnInit {
     this.playState = "play"
     this.draw()
   }
+  playStateChanged(){
+    this.playStateChange.emit(this.duration)
+  }
   pause(){
     this.playState = "pause"
+    this.playStateChanged()
   }
+  toggleControls(){
+    this.showControls = !this.showControls; 
+  }
+  updateTimeSpent(){
+    this.timeUpdate.emit(this.duration)
+
+  }
+  
+
 
 }

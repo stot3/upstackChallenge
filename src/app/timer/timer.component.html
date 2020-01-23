@@ -1,32 +1,33 @@
-  <div class="timer-controls">
-    <div #playButton (click)="play()">
-        <svg width="50" height="50" viewBox="0 0 141 131" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M70.5 0C34.3 0 5 29.3 5 65.5C5 101.7 34.3 131 70.5 131C106.7 131 136 101.7 136 65.5C136 29.3 106.7 0 70.5 0ZM109.4 66.9L52 103.5C51.7 103.8 51.3 103.9 50.9 103.9L50.1 103.7C49.5 103.4 49.2 102.8 49.2 102.2V28.8C49.2 28.1 49.6 27.5 50.1 27.3C50.7 27 51.4 27.1 52 27.5L109.4 64.2C109.8 64.5 110.1 65 110.1 65.6C110 66 109.8 66.5 109.4 66.9Z" fill="url(#paint0_linear)"/>
-          <defs>
-          <linearGradient id="paint0_linear" x1="70.5" y1="129" x2="70.5" y2="-0.0155029" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#51F7ED"/>
-          <stop offset="1" stop-color="white"/>
-          </linearGradient>
-          </defs>
-      </svg>  
-    </div>
-    <div #pauseButton (click)="pause()">
-      <svg width="50" height="50" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 4C12.95 4 4 12.95 4 24C4 35.05 12.95 44 24 44C35.05 44 44 35.05 44 24C44 12.95 35.05 4 24 4ZM22 32H18V16H22V32ZM30 32H26V16H30V32Z" fill="url(#paint0_linear)"/>
-        <defs>
-        <linearGradient id="paint0_linear" x1="24" y1="4" x2="24" y2="44" gradientUnits="userSpaceOnUse">
-        <stop stop-color="white"/>
-        <stop offset="1" stop-color="#51F7ED"/>
-        </linearGradient>
-        </defs>
-      </svg>
-    </div>
-    <div class="timer-container">
-      <svg width="250" height="250" viewbox="0 0 250 250">
+
+    <div class="timer-container" (mouseenter)="toggleControls()" (mouseleave)="toggleControls()">
+      <svg width="250px" height="250px" viewbox="0 0 250 250">
         <path #border id="border" [attr.d]="d" transform="translate(125, 125)"/>
         <path #loader id="loader" [attr.d]="d" transform="translate(125, 125) scale(.84)"/>
       </svg>
       <span>{{duration | DurationFormat}}</span>
+      <div *ngIf="showControls === true" class="timer-controls">
+          <div #playButton (click)="play()">
+              <svg width="50" height="50" viewBox="0 0 141 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M70.5 0C34.3 0 5 29.3 5 65.5C5 101.7 34.3 131 70.5 131C106.7 131 136 101.7 136 65.5C136 29.3 106.7 0 70.5 0ZM109.4 66.9L52 103.5C51.7 103.8 51.3 103.9 50.9 103.9L50.1 103.7C49.5 103.4 49.2 102.8 49.2 102.2V28.8C49.2 28.1 49.6 27.5 50.1 27.3C50.7 27 51.4 27.1 52 27.5L109.4 64.2C109.8 64.5 110.1 65 110.1 65.6C110 66 109.8 66.5 109.4 66.9Z" fill="url(#paint0_linear)"/>
+                <defs>
+                <linearGradient id="paint0_linear" x1="70.5" y1="129" x2="70.5" y2="-0.0155029" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#51F7ED"/>
+                <stop offset="1" stop-color="white"/>
+                </linearGradient>
+                </defs>
+            </svg>  
+          </div>
+          <div #pauseButton (click)="pause()">
+            <svg width="50" height="50" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4C12.95 4 4 12.95 4 24C4 35.05 12.95 44 24 44C35.05 44 44 35.05 44 24C44 12.95 35.05 4 24 4ZM22 32H18V16H22V32ZM30 32H26V16H30V32Z" fill="url(#paint0_linear)"/>
+              <defs>
+              <linearGradient id="paint0_linear" x1="24" y1="4" x2="24" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="white"/>
+              <stop offset="1" stop-color="#51F7ED"/>
+              </linearGradient>
+              </defs>
+            </svg>
+          </div>
+      </div>
     </div>
-  </div>
 

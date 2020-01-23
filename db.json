@@ -1,9 +1,17 @@
 {
   "todos": [
     {
-      "title": "my first task",
+      "title": "Testing",
+      "complete": true,
+      "duration": 1697,
+      "showControls": true,
+      "id": 3
+    },
+    {
+      "title": "Let's try again",
       "complete": false,
-      "id": 1
+      "duration": 1800,
+      "id": 4
     }
   ]
 }

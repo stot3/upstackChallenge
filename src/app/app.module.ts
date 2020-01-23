@@ -11,7 +11,6 @@ import { TodoDataService } from './todo-data.service';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { ApiService } from './api.service';
 import { TimerComponent } from './timer/timer.component';
-import { DurationFormatPipe } from './timer/duration.pipe';
 import { TimerModule } from './timer/timer.module';
 
 @NgModule({

@@ -1,12 +1,12 @@
 <section class="main" *ngIf="todos.length > 0">
   <ul class="todo-list">
     <li *ngFor="let todo of todos" [class.completed]="todo.complete">
-      <app-todo-list-item
-        [todo]="todo"
-        (toggleComplete)="onToggleTodoComplete($event)"
-        (remove)="onRemoveTodo($event)">
-      </app-todo-list-item>
-      <app-timer></app-timer>
+        <app-todo-list-item
+          [todo]="todo"
+          (toggleComplete)="onToggleTodoComplete($event)"
+          (remove)="onRemoveTodo($event)"
+          (saveDuration)="playStateChanged($event)">
+        </app-todo-list-item>
     </li>
   </ul>
 </section>

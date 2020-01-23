@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DurationFormatPipe } from './duration.pipe';
 import { TimerComponent } from './timer.component';
+import { DurationFormatPipe } from '../duration.pipe';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     TimerComponent,
@@ -13,6 +14,9 @@ import { TimerComponent } from './timer.component';
   ],
   exports: [
     TimerComponent
+  ],
+  providers: [
+    DurationFormatPipe
   ]
 })
 export class TimerModule { }

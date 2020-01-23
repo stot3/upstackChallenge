@@ -8,7 +8,7 @@ import { Todo } from '../todo';
     styleUrls: ['./todo-list.component.scss']
   }
 )
-export class TodoListComponent {
+export class TodoListComponent{
 
   @Input()
   todos: Todo[];
@@ -19,8 +19,10 @@ export class TodoListComponent {
   @Output()
   toggleComplete: EventEmitter<Todo> = new EventEmitter();
 
-  constructor() {
-  }
+  @Output()
+  savePlayState: EventEmitter<Todo> = new EventEmitter();
+
+  constructor(){}
 
   onToggleTodoComplete(todo: Todo) {
     this.toggleComplete.emit(todo);
@@ -28,6 +30,9 @@ export class TodoListComponent {
 
   onRemoveTodo(todo: Todo) {
     this.remove.emit(todo);
+  }
+  playStateChanged(todo: Todo){
+    this.savePlayState.emit(todo)
   }
 
 }
